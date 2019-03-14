@@ -13,10 +13,13 @@ app.get('/', (req, res, next) => {
 
     var desde = req.query.desde || 0;
     desde = Number(desde);
+    var limite = req.query.limite || 0;
+    limite = Number(limite);
+
 
     Hospital.find({})
         .skip(desde)
-        .limit(5)
+        .limit(limite)
         .populate('usuario', 'nombre email')
         .exec(
 
